@@ -2,4 +2,4 @@ spring:
   application:
     name: Person-service
 server:
-  port: 9090
+  port: 60901

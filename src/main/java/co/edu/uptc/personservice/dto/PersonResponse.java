@@ -8,5 +8,6 @@ public class PersonResponse {
     private String name;
     private String lastName;
     private int age;
-    private String message; // Opcional: "Persona registrada con éxito"
+    private String message;
+
 }

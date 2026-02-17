@@ -15,15 +15,14 @@ public class PersonController {
 
    private final PersonService personService;
 
-
     public PersonController(PersonService personService) {
         this.personService = personService;
     }
 
     @PostMapping
-    public PersonResponse createTask(@RequestBody PersonRequest request){
+    public PersonResponse createPerson(@RequestBody PersonRequest request){
        return personService.save(request);
-       // return "Persona adicionada";
+
     }
 
     @GetMapping
