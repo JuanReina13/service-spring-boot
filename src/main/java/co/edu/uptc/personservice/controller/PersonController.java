@@ -22,7 +22,6 @@ public class PersonController {
     @PostMapping
     public PersonResponse createPerson(@RequestBody PersonRequest request){
        return personService.save(request);
-
     }
 
     @GetMapping

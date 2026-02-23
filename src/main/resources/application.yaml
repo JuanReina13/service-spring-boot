@@ -1,5 +1,11 @@
+server:
+  port: 60901
+
 spring:
   application:
     name: Person-service
-server:
-  port: 60901
+
+# Esta es la sección personalizada que lee tu Service
+configuracion:
+  # Ruta: "./data/personas.txt" convertida a Base64
+  ruta-archivo-b64: Li9kYXRhL3BlcnNvbmFzLnR4dA==
