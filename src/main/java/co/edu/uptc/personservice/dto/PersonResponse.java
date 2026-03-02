@@ -9,5 +9,6 @@ public class PersonResponse {
     private String lastName;
     private int age;
     private String message;
-
+    private String serverIp;
+    private String instance;
 }
