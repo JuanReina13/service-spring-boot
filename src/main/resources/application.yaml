@@ -1,11 +1,15 @@
-server:
-  port: 60901
-
 spring:
-  application:
-    name: Person-service
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/${DB_NAME:persondb}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
 
 configuration:
   directory: ./datos
   file-name: inventario.txt
-  instance-name: "Soy el programa 1"
+  instance-name: ${INSTANCE_NAME:Soy el programa 1}
