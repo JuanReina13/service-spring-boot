@@ -13,3 +13,12 @@ configuration:
   directory: ./datos
   file-name: inventario.txt
   instance-name: ${INSTANCE_NAME:Soy el programa 1}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
