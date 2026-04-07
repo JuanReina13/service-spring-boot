@@ -10,6 +10,8 @@ import co.edu.uptc.personservice.dto.PersonResponse;
 import co.edu.uptc.personservice.dto.PersonWrapper;
 import co.edu.uptc.personservice.model.Person;
 import co.edu.uptc.personservice.model.PersonRepository;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 @Service
 public class PersonService {
@@ -32,15 +34,16 @@ public class PersonService {
     }
 
     public PersonWrapper<List<PersonDto>> getAll() {
-        List<PersonDto> dtos = personRepository.findAll().stream().map(person -> {
-            PersonDto dto = new PersonDto();
-            dto.setName(person.getName());
-            dto.setLastName(person.getLastName());
-            dto.setAge(person.getAge());
-            return dto;
-        }).toList();
-        return new PersonWrapper<>(this.serverIp, this.instance, dtos);
-    }
+    Pageable pageable = PageRequest.of(0, 100); // solo 100 registros
+    List<PersonDto> dtos = personRepository.findAll(pageable).stream().map(person -> {
+        PersonDto dto = new PersonDto();
+        dto.setName(person.getName());
+        dto.setLastName(person.getLastName());
+        dto.setAge(person.getAge());
+        return dto;
+    }).toList();
+    return new PersonWrapper<>(this.serverIp, this.instance, dtos);
+}
 
     public PersonResponse save(PersonRequest request) {
         Person newPerson = new Person(null, request.getName(), request.getLastName(), request.getAge());
