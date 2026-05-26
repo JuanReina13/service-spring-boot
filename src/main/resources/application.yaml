@@ -1,4 +1,13 @@
 spring:
+  main:
+    lazy-initialization: true
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+      - org.springframework.boot.autoconfigure.data.mongo.MongoAutoConfiguration
+      - org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration
+      - org.springframework.boot.autoconfigure.jms.JmsAutoConfiguration
+      - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
   datasource:
     url: jdbc:postgresql://${DB_HOST}:5432/${DB_NAME}
     username: ${DB_USER}
@@ -9,6 +18,12 @@ spring:
       ddl-auto: update
     show-sql: true
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        id:
+          new_generator_mappings: false
+        temp:
+          use_jdbc_metadata_defaults: false
 
 configuration:
   directory: ./datos
